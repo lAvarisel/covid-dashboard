@@ -1,9 +1,9 @@
 import "../main.scss";
 
-export class App {
+export default class App {
   constructor() {
     this.container = document.querySelector("#root");
   }
 
-  init() {}
+  static init() {}
 }
