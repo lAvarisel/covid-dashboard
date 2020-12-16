@@ -7,7 +7,7 @@ body {
   height: 100vh;
   padding: 10px;
   box-sizing: border-box;
-  background-color: #201c1c;
+  background-color: #000;
   grid-template-columns: 1fr 3.5fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   gap: 10px 10px;
@@ -41,6 +41,13 @@ body {
   border: 2px solid #585757;
   border-radius: 50%;
   cursor: pointer;
+  background-image: url('./assets/img/arrow_expand_full.png');
+  background-position: center;
+  background-size: 17px;
+  background-repeat: no-repeat;
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 .map {
   grid-area: map;
