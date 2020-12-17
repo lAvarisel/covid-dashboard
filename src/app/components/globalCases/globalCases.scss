@@ -5,6 +5,7 @@
   align-items: center;
   &_title {
     color: #fff;
+    font-size: 1.2rem;
   }
   &_inner {
     display: flex;
@@ -14,7 +15,7 @@
   }
   &_count {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.9rem;
     font-weight: bold;
     color: red;
   }

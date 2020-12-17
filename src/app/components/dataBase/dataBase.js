@@ -19,4 +19,10 @@ export default class DataBase {
     this.appdata = await response.json();
     return this.appdata;
   }
+
+  async getSummaryFromApi() {
+    const response = await fetch("https://api.covid19api.com/summary");
+    this.appdata = await response.json();
+    return this.appdata;
+  }
 }
