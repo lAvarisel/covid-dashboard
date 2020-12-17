@@ -1,3 +1,6 @@
+html {
+  font-size: 16px;
+}
 body {
   margin: 0;
 }
@@ -41,7 +44,7 @@ body {
   border: 2px solid #585757;
   border-radius: 50%;
   cursor: pointer;
-  background-image: url('./assets/img/arrow_expand_full.png');
+  background-image: url("./assets/img/arrow_expand_full.png");
   background-position: center;
   background-size: 17px;
   background-repeat: no-repeat;

@@ -10,9 +10,11 @@
     "globals": {
         "window": true,
         "console": true,
-        "document": true
+        "document": true,
+        "fetch": false
      },
      "rules": {
         "no-console": "off"
      }
+    //  "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
 }
