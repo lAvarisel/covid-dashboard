@@ -3,8 +3,6 @@ import GlobalCases from "./components/globalCases/globalCases";
 import AppData from "./components/dataBase/dataBase";
 
 export default class App {
-  // state = "";
-
   constructor() {
     this.container = document.querySelector("#root");
   }
@@ -14,6 +12,6 @@ export default class App {
     appData.init();
     const globalCases = new GlobalCases();
     globalCases.init();
-    this.state = "init";
+    return this;
   }
 }
