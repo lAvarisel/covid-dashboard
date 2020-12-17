@@ -1,6 +1,7 @@
 import "../main.scss";
 import GlobalCases from "./components/globalCases/globalCases";
 import AppData from "./components/dataBase/dataBase";
+import CasesByCountry from "./components/casesByCountry/casesByCountry";
 
 export default class App {
   constructor() {
@@ -9,9 +10,11 @@ export default class App {
 
   init() {
     const appData = new AppData();
-    appData.init();
     const globalCases = new GlobalCases();
+    const casesByCountry = new CasesByCountry();
+    appData.init();
     globalCases.init();
+    casesByCountry.init();
     return this;
   }
 }
