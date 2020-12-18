@@ -21,5 +21,17 @@
   &_count {
     font-size: 1.9rem;
     margin: 0;
+    &--recovered {
+      color: green;
+    }
+  }
+  &_row {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid;
+    padding: 5px;
+  }
+  &_navigation {
+    margin-top: 7px;
   }
 }
