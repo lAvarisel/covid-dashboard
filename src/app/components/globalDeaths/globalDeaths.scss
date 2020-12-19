@@ -30,8 +30,15 @@
     flex-direction: column;
     border-bottom: 1px solid;
     padding: 5px;
+    cursor: pointer;
+    &--active {
+      background-color: rgb(0, 83, 110);
+    }
   }
   &_navigation {
     margin-top: 7px;
+  }
+  &_cell--recovered {
+    color: green;
   }
 }

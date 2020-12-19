@@ -6,8 +6,10 @@ import "./globalDeaths.scss";
 export default class GlobalDeaths {
   async init() {
     const dataBase = new DataBase();
-    dataBase.init();
     const loadingAnimate = new LoadingAnimation();
+    const select = document.querySelector("#globalDeaths_select");
+    const module = document.querySelector(".globalDeaths");
+    dataBase.init();
     document
       .querySelector(".globalDeaths")
       .append(loadingAnimate.init().loadAnimateInner);
@@ -15,12 +17,23 @@ export default class GlobalDeaths {
     this.summary = await dataBase.getSummaryFromApi();
     GlobalDeaths.generateTableGlobalDeath(this.summary);
     loadingAnimate.stopAnimate();
-    const select = document.querySelector("#globalDeaths_select");
     select.addEventListener("change", () => {
       if (select.value === "Global Deaths") {
         GlobalDeaths.generateTableGlobalDeath(this.summary, "Global Deaths");
       } else {
         GlobalDeaths.generateTableGlobalDeath(this.summary, "Global Recovered");
+      }
+    });
+    module.addEventListener("click", (event) => {
+      const targetRow = event.target.closest("tr");
+      const currentActive = document.querySelector(".globalDeaths_row--active");
+      if (currentActive !== null) {
+        currentActive.classList.remove("globalDeaths_row--active");
+      }
+      if (targetRow.classList.contains("globalDeaths_row--active")) {
+        event.target.closest("tr").classList.remove("globalDeaths_row--active");
+      } else {
+        event.target.closest("tr").classList.add("globalDeaths_row--active");
       }
     });
     return this;
@@ -65,12 +78,14 @@ export default class GlobalDeaths {
         "$1 "
       );
       cellCount.append(`${countNumb} recovered`);
+      cellCount.classList.add("globalDeaths_cell--recovered");
     } else {
       countNumb = country.TotalDeaths.toString().replace(
         /(\d)(?=(\d\d\d)+([^\d]|$))/g,
         "$1 "
       );
       cellCount.append(`${countNumb} deaths`);
+      cellCount.classList.remove("globalDeaths_cell--recovered");
     }
     cellCountry.append(country.Country);
     newRow.append(cellCount);
