@@ -16,7 +16,8 @@
   &_table {
     display: block;
     overflow: auto;
-    max-width: 100%;
+    width: 100%;
+    height: 100%;
   }
   &_count {
     font-size: 1.9rem;
