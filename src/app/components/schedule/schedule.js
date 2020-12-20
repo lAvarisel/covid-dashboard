@@ -1,16 +1,46 @@
 import Chart from "chart.js";
 import LoadingAnimation from "../loading/loading";
 import "./schedule.scss";
-// import DataBase from "../dataBase/dataBase";
+import DataBase from "../dataBase/dataBase";
 
 export default class Schedule {
-  init() {
+  async init() {
     const loadingAnimate = new LoadingAnimation();
     document
       .querySelector(".schedule_inner")
       .append(loadingAnimate.init().loadAnimateInner);
     loadingAnimate.startAnimate();
-    const ctx = document.getElementById("schedule_chart");
+    const select = document.querySelector("#schedule_select");
+    Schedule.render(select);
+    loadingAnimate.stopAnimate();
+    return this;
+  }
+
+  static async getCasesByCountry(country) {
+    const cases = await DataBase.getDataFromApi("countryAllCases", country);
+    return cases;
+  }
+
+  static render(select) {
+    let label = "";
+    switch (select) {
+      case "Daily Deaths":
+        break;
+
+      case "Cumulative Cases":
+        break;
+
+      case "Cumulative Deaths":
+        break;
+
+      case "Log Cases":
+        break;
+
+      default:
+        label = "Daily Cases";
+        break;
+    }
+    const ctx = document.querySelector("#schedule_chart");
     // eslint-disable-next-line no-unused-vars
     const myChart = new Chart(ctx, {
       type: "bar",
@@ -18,24 +48,10 @@ export default class Schedule {
         labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
         datasets: [
           {
-            label: "# of Votes",
+            label: `${label}`,
             data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-              "rgba(255, 99, 132, 0.2)",
-              "rgba(54, 162, 235, 0.2)",
-              "rgba(255, 206, 86, 0.2)",
-              "rgba(75, 192, 192, 0.2)",
-              "rgba(153, 102, 255, 0.2)",
-              "rgba(255, 159, 64, 0.2)",
-            ],
-            borderColor: [
-              "rgba(255, 99, 132, 1)",
-              "rgba(54, 162, 235, 1)",
-              "rgba(255, 206, 86, 1)",
-              "rgba(75, 192, 192, 1)",
-              "rgba(153, 102, 255, 1)",
-              "rgba(255, 159, 64, 1)",
-            ],
+            backgroundColor: "rgba(255, 99, 132, 0.2)",
+            borderColor: "rgba(255, 99, 132, 1)",
             borderWidth: 1,
           },
         ],
@@ -52,7 +68,5 @@ export default class Schedule {
         },
       },
     });
-    loadingAnimate.stopAnimate();
-    return this;
   }
 }
