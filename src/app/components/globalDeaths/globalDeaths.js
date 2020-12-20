@@ -5,18 +5,16 @@ import "./globalDeaths.scss";
 
 export default class GlobalDeaths {
   async init() {
-    const dataBase = new DataBase();
     const loadingAnimate = new LoadingAnimation();
     const select = document.querySelector("#globalDeaths_select");
     const table = document.querySelector(".globalDeaths_table");
     let activeCountry = "all";
     let fullTableType = "all";
-    dataBase.init();
     document
       .querySelector(".globalDeaths")
       .append(loadingAnimate.init().loadAnimateInner);
     loadingAnimate.startAnimate();
-    const summary = await dataBase.getSummaryFromApi();
+    const summary = await DataBase.getDataFromApi("summary");
     GlobalDeaths.generateTableGlobalDeath(
       summary,
       "Global Deaths",

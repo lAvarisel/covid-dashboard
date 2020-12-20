@@ -4,14 +4,12 @@ import LoadingAnimation from "../loading/loading";
 
 export default class GlobalCases {
   async init() {
-    const dataBase = new DataBase();
-    dataBase.init();
     const loadingAnimate = new LoadingAnimation();
     document
       .querySelector(".globalCases_inner")
       .append(loadingAnimate.init().loadAnimateInner);
     loadingAnimate.startAnimate();
-    const totalCount = await dataBase.getTotalFromApi();
+    const totalCount = await DataBase.getDataFromApi("worldTotal");
     loadingAnimate.stopAnimate();
     GlobalCases.setCount(totalCount.TotalConfirmed);
     return this;

@@ -8,21 +8,31 @@ export default class DataBase {
     window.localStorage.setItem("appCovidData", serialObj);
   }
 
-  async getAllDataFromApi() {
-    const response = await fetch("https://api.covid19api.com/all");
-    this.appdata = await response.json();
-    return this.appdata;
-  }
+  static async getDataFromApi(api, country) {
+    let response = "";
+    switch (api) {
+      case "worldTotal":
+        response = await fetch("https://api.covid19api.com/world/total");
+        break;
 
-  async getTotalFromApi() {
-    const response = await fetch("https://api.covid19api.com/world/total");
-    this.appdata = await response.json();
-    return this.appdata;
-  }
+      case "summary":
+        response = await fetch("https://api.covid19api.com/summary");
+        break;
 
-  async getSummaryFromApi() {
-    const response = await fetch("https://api.covid19api.com/summary");
-    this.appdata = await response.json();
-    return this.appdata;
+      case "countries":
+        response = await fetch("https://api.covid19api.com/countries");
+        break;
+
+      case "countryAllCases":
+        response = await fetch(
+          `https://api.covid19api.com/dayone/country/${country}`
+        );
+        break;
+
+      default:
+        break;
+    }
+    const appData = await response.json();
+    return appData;
   }
 }
