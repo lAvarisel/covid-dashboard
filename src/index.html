@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COVID-19 Dashboard</title>
+    <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 </head>
 <body>
     <div id="root" class="root">
         <div class="grid-container">
             <div class="map">
                 <div class="btn map_btn--fullscreen"></div>
+                <div class="map_inner" id = "map_inner"></div>
             </div>
             <div class="casesByCountry">
                 <div class="btn casesByCountry_btn--fullscreen"></div>
