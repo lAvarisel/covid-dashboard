@@ -3,13 +3,15 @@ export default class DataBase {
     return this;
   }
 
-  setAllDataToStorage() {
-    const serialObj = JSON.stringify(this.appdata);
-    window.localStorage.setItem("appCovidData", serialObj);
+  static setAllDataToStorage(appdata, name) {
+    const serialObj = JSON.stringify(appdata);
+    window.localStorage.setItem(`${name}Covid`, serialObj);
   }
 
   static async getDataFromApi(api, country) {
     let response = "";
+    // const currentDate = new Date()
+    // let appData = ''
     switch (api) {
       case "worldTotal":
         response = await fetch("https://api.covid19api.com/world/total");
@@ -33,6 +35,7 @@ export default class DataBase {
         break;
     }
     const appData = await response.json();
+    DataBase.setAllDataToStorage(appData, api);
     return appData;
   }
 }
