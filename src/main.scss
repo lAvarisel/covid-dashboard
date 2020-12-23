@@ -53,6 +53,15 @@ body {
     transform: scale(1.1);
   }
 }
+.window--fullSize {
+  position: absolute;
+  z-index: 1000;
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+}
 .map {
   grid-area: map;
 }
