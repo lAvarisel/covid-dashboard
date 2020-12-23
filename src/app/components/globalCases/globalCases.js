@@ -12,6 +12,13 @@ export default class GlobalCases {
     const totalCount = await DataBase.getDataFromApi("worldTotal");
     loadingAnimate.stopAnimate();
     GlobalCases.setCount(totalCount.TotalConfirmed);
+    document
+      .querySelector(".globalCases_btn--fullscreen")
+      .addEventListener("click", () => {
+        document
+          .querySelector(".globalCases")
+          .classList.toggle("window--fullSize");
+      });
     return this;
   }
 

@@ -87,6 +87,13 @@ export default class GlobalDeaths {
         GlobalDeaths.setCount(targetCountryCount);
       }
     });
+    document
+      .querySelector(".globalDeaths_btn--fullscreen")
+      .addEventListener("click", () => {
+        document
+          .querySelector(".globalDeaths")
+          .classList.toggle("window--fullSize");
+      });
     return this;
   }
 

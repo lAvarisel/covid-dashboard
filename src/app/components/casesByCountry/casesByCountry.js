@@ -55,6 +55,13 @@ export default class CasesByCountry {
       }
     });
     loadingAnimate.stopAnimate();
+    document
+      .querySelector(".casesByCountry_btn--fullscreen")
+      .addEventListener("click", () => {
+        document
+          .querySelector(".casesByCountry")
+          .classList.toggle("window--fullSize");
+      });
     return this;
   }
 
