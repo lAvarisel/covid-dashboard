@@ -1,3 +1,5 @@
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 import geoCoord from "./geoLocation";
 import DataBase from "../dataBase/dataBase";
 import "./map.scss";
@@ -6,14 +8,11 @@ export default class Map {
   async init() {
     const summary = await DataBase.getDataFromApi("summary");
     const arrData = Array.from(summary.Countries);
-    // const { leafletjs } = window;
     const mapOptions = {
       center: [30, 0],
       zoom: 2,
     };
-    // eslint-disable-next-line no-undef
     const map = new L.map("map_inner", mapOptions);
-    // eslint-disable-next-line no-undef
     const layer = new L.TileLayer(
       "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     );
@@ -29,7 +28,6 @@ export default class Map {
         country
       );
     });
-    // eslint-disable-next-line no-undef
     let markerLayer = L.featureGroup(markerArr);
     map.addLayer(markerLayer);
     document
@@ -58,7 +56,6 @@ export default class Map {
             );
           });
         }
-        // eslint-disable-next-line no-undef
         markerLayer = L.featureGroup(markerArr);
         map.addLayer(markerLayer);
       });
@@ -89,22 +86,17 @@ export default class Map {
         fillColor: "#f03",
         fillOpacity: 0.5,
       };
-      // eslint-disable-next-line no-undef
       const circle = L.circle(circleCenter, currentSize, circleOptions);
-      // circle.addTo(map);
-
       const iconOptions = {
         iconUrl: `https://www.countryflags.io/${code}/flat/64.png`,
         iconSize: [25, 25],
       };
-      // eslint-disable-next-line no-undef
       const customIcon = L.icon(iconOptions);
       const markerOptions = {
         title: `${country}`,
         clickable: true,
         icon: customIcon,
       };
-      // eslint-disable-next-line no-undef
       const marker = L.marker(circleCenter, markerOptions);
       marker
         .bindPopup(
@@ -115,7 +107,6 @@ export default class Map {
         .openPopup();
       markerArr.push(circle);
       markerArr.push(marker);
-      // marker.addTo(map);
     } else {
       console.log(country);
     }
@@ -136,22 +127,17 @@ export default class Map {
           fullInfoTargetCountry = element;
         }
       });
-      // eslint-disable-next-line no-undef
       const circle = L.circle(circleCenter, currentSize, circleOptions);
-      // circle.addTo(map);
-
       const iconOptions = {
         iconUrl: `https://www.countryflags.io/${fullInfoTargetCountry.CountryCode}/flat/64.png`,
         iconSize: [25, 25],
       };
-      // eslint-disable-next-line no-undef
       const customIcon = L.icon(iconOptions);
       const markerOptions = {
         title: `${country}`,
         clickable: true,
         icon: customIcon,
       };
-      // eslint-disable-next-line no-undef
       const marker = L.marker(circleCenter, markerOptions);
       marker
         .bindPopup(
@@ -162,13 +148,8 @@ export default class Map {
         .openPopup();
       markerArr.push(circle);
       markerArr.push(marker);
-      // markerLayer.addTo(map);
     } else {
       console.log(country);
     }
   }
-
-  // static clearMap(markerLayer, targetCountry) {
-  //   // eslint-disable-next-line no-underscore-dangle
-  // }
 }
