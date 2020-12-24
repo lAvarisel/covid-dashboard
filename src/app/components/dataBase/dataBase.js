@@ -3,18 +3,22 @@ export default class DataBase {
     return this;
   }
 
-  static setAllDataToStorage(appdata, name) {
+  static setAllDataToStorage(appdata, name, country) {
     const serialObj = JSON.stringify(appdata);
-    window.localStorage.setItem(`${name}Covid`, serialObj);
+    let currentName = name;
+    if (country !== null && country !== undefined) {
+      currentName = name + country;
+    }
+    window.localStorage.setItem(`${currentName}Covid`, serialObj);
     const dataNow = new Date();
     const formatedDate = dataNow.toDateString();
     let dataStorage = window.localStorage.getItem("lastCovidUpdate");
     if (dataStorage !== null && dataStorage !== undefined) {
       dataStorage = JSON.parse(window.localStorage.getItem("lastCovidUpdate"));
-      dataStorage[name] = formatedDate;
+      dataStorage[currentName] = formatedDate;
     } else {
       dataStorage = {};
-      dataStorage[name] = formatedDate;
+      dataStorage[currentName] = formatedDate;
     }
     const serialDate = JSON.stringify(dataStorage);
     window.localStorage.setItem("lastCovidUpdate", serialDate);
@@ -63,11 +67,25 @@ export default class DataBase {
           );
           break;
 
+        case "currentCountry":
+          response = await fetch(
+            `https://api.covid19api.com/live/country/${country}/status/confirmed`
+          );
+          break;
+
+        case "fullWorld":
+          response = await fetch(`https://corona-api.com/timeline`);
+          break;
+
+        case "timelineCountry":
+          response = await fetch(`https://corona-api.com/countries/${country}`);
+          break;
+
         default:
           break;
       }
       appData = await response.json();
-      DataBase.setAllDataToStorage(appData, api);
+      DataBase.setAllDataToStorage(appData, api, country);
     }
     return appData;
   }

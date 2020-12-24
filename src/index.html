@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COVID-19 Dashboard</title>
-    <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-    <script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 </head>
 <body>
     <div id="root" class="root">
@@ -37,6 +35,11 @@
             </div>
             <div class="deathsRecovered">
                 <div class="btn deathsRecovered_btn--fullscreen"></div>
+                <div class="deathsRecovered_inner">
+                    <p class="deathsRecovered_title">State Level</p>
+                    <p class="deathsRecovered_count" id="deathsRecovered_count">Deaths, Recovered</p>
+                    <table class="deathsRecovered_table"></table>
+                </div>
             </div>
             <div class="globalCases">
                 <div class="btn globalCases_btn--fullscreen"></div>
@@ -51,9 +54,9 @@
                     <canvas id="schedule_chart"></canvas>
                 </div>
                 <select name="schedule_select" id="schedule_select">
-                    <option selected>Daily Cases</option>
+                    <option>Daily Cases</option>
                     <option>Daily Deaths</option>
-                    <option>Cumulative Cases</option>
+                    <option selected>Cumulative Cases</option>
                     <option>Cumulative Deaths</option>
                     <option>Log Cases</option>
                 </select>

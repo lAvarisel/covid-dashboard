@@ -5,6 +5,7 @@ import CasesByCountry from "./components/casesByCountry/casesByCountry";
 import GlobalDeaths from "./components/globalDeaths/globalDeaths";
 import Map from "./components/map/map";
 import Shedule from "./components/schedule/schedule";
+import DeathsRecovered from "./components/deathsRecovered/deathsRecovered";
 
 export default class App {
   constructor() {
@@ -18,12 +19,14 @@ export default class App {
     const globalDeaths = new GlobalDeaths();
     const map = new Map();
     const shedule = new Shedule();
+    const deathsRecovered = new DeathsRecovered();
     appData.init();
     globalCases.init();
     casesByCountry.init();
     globalDeaths.init();
     map.init();
     shedule.init();
+    deathsRecovered.init();
     return this;
   }
 }
