@@ -1,0 +1,82 @@
+html {
+  font-size: 16px;
+}
+body {
+  margin: 0;
+}
+.grid-container {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #000;
+  grid-template-columns: 1fr 3.5fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 10px 10px;
+  grid-template-areas:
+    "globalCases map globalDeaths deathsRecovered"
+    "casesByCountry map globalDeaths deathsRecovered"
+    "casesByCountry map schedule schedule"
+    "casesByCountry map schedule schedule";
+}
+.map,
+.casesByCountry,
+.globalDeaths,
+.deathsRecovered,
+.globalCases,
+.schedule {
+  border: 2px solid #585757;
+  background-color: #444242;
+  position: relative;
+  &:hover &_btn--fullscreen {
+    display: block;
+  }
+}
+.btn {
+  display: none;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  width: 20px;
+  height: 20px;
+  background-color: #2b2a2a;
+  border: 2px solid #585757;
+  border-radius: 50%;
+  cursor: pointer;
+  background-image: url("./assets/img/arrow_expand_full.png");
+  background-position: center;
+  background-size: 17px;
+  background-repeat: no-repeat;
+  z-index: 1100;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+.window--fullSize {
+  position: absolute;
+  z-index: 1000;
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+}
+.map {
+  grid-area: map;
+}
+.casesByCountry {
+  grid-area: casesByCountry;
+}
+.globalDeaths {
+  grid-area: globalDeaths;
+}
+.deathsRecovered {
+  grid-area: deathsRecovered;
+}
+.globalCases {
+  grid-area: globalCases;
+}
+.schedule {
+  grid-area: schedule;
+}

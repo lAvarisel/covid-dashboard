@@ -1,0 +1,20 @@
+{
+    "extends": [
+        "airbnb-base",
+        "prettier"
+    ],
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaVersion": 2018
+    },
+    "globals": {
+        "window": true,
+        "console": true,
+        "document": true,
+        "fetch": false
+     },
+     "rules": {
+        "no-console": "off"
+     }
+    //  "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+}

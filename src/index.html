@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 Dashboard</title>
+</head>
+<body>
+    <div id="root" class="root">
+        <div class="grid-container">
+            <div class="map">
+                <div class="btn map_btn--fullscreen"></div>
+                <div class="map_inner" id = "map_inner"></div>
+            </div>
+            <div class="casesByCountry">
+                <div class="btn casesByCountry_btn--fullscreen"></div>
+                <div class="casesByCountry_inner">
+                    <p class="casesByCountry_title">Cases by Country/Region/Sovereignty</p>
+                    <table class="casesByCountry_table"></table>
+                </div>
+            </div>
+            <div class="globalDeaths">
+                <div class="btn globalDeaths_btn--fullscreen"></div>
+                <div class="globalDeaths_inner">
+                    <p class="globalDeaths_title">Global Deaths</p>
+                    <p class="globalDeaths_count" id="globalDeaths_count"></p>
+                    <table class="globalDeaths_table"></table>
+                    <div class="globalDeaths_navigation">
+                        <select name="globalDeaths_select" id="globalDeaths_select">
+                            <option selected>Global Deaths</option>
+                            <option>Global Recovered</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="deathsRecovered">
+                <div class="btn deathsRecovered_btn--fullscreen"></div>
+                <div class="deathsRecovered_inner">
+                    <p class="deathsRecovered_title">State Level</p>
+                    <p class="deathsRecovered_count" id="deathsRecovered_count">Deaths, Recovered</p>
+                    <table class="deathsRecovered_table"></table>
+                </div>
+            </div>
+            <div class="globalCases">
+                <div class="btn globalCases_btn--fullscreen"></div>
+                <div class="globalCases_inner">
+                    <p class="globalCases_title">Global Cases</p>
+                    <p class="globalCases_count" id="globalCases_count"></p>
+                </div>
+            </div>
+            <div class="schedule">
+                <div class="btn schedule_btn--fullscreen"></div>
+                <div class="schedule_inner">
+                    <canvas id="schedule_chart"></canvas>
+                </div>
+                <select name="schedule_select" id="schedule_select">
+                    <option>Daily Cases</option>
+                    <option>Daily Deaths</option>
+                    <option selected>Cumulative Cases</option>
+                    <option>Cumulative Deaths</option>
+                    <option>Log Cases</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
